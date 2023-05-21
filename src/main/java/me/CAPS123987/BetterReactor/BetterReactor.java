@@ -39,7 +39,7 @@ public class BetterReactor extends JavaPlugin implements SlimefunAddon {
         if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
         	
         	GitHubBuildsUpdater
-        	updater = new GitHubBuildsUpdater(this, this.getFile(), "CAPS123987/Better-Nuclear-Generator/master");
+        	updater = new GitHubBuildsUpdater(this, this.getFile(), "SlimefunGuguProject/Better-Nuclear-Generator/master");
         	updater.start();
         	
         }

@@ -25,80 +25,80 @@ public class Items {
 	
 	public static final ItemGroup betterReactor = new ItemGroup(new NamespacedKey(BetterReactor.getInstance(),
 	        "Better_Reactor"),
-	        new CustomItemStack(Material.OBSIDIAN, "&dBetter Reactor")
+	        new CustomItemStack(Material.OBSIDIAN, "&d工业反应堆")
 	    );
 	
-	public static final SlimefunItemStack REACTOR_CORE = new SlimefunItemStack("REACTOR_CORE",
+	public static final SlimefunItemStack REACTOR_CORE = new SlimefunItemStack("REACTOR_CORE_BNG",
 			Material.MAGENTA_GLAZED_TERRACOTTA,
-	        ChatColor.RESET+"Reactor Core",
+	        ChatColor.RESET+"反应堆堆芯",
 	        "",
 	        LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
 	        LoreBuilder.powerBuffer(4096),
 	        LoreBuilder.powerPerSecond(4096),
-	        "&8\u21E8 &e\u26A1 &7"+"Lasts "+ReactorCore.burnTime/2+"s",
-	        "&8\u21E8 &e\u26A1 &7"+"In total: 2.04M J",
-	        "&7Core of Reactor, &bshows Reactor Core Hologram"
+	        "&8\u21E8 &e\u26A1 &7"+"持续 "+ReactorCore.burnTime/2+"s",
+	        "&8\u21E8 &e\u26A1 &7"+"总发电: 2.04M J",
+	        "&7反应堆堆芯, &b可显示反应堆堆芯全息图"
 	    );
-	public static final SlimefunItemStack HEATED_COOLANT = new SlimefunItemStack("HEATED_COOLANT",
+	public static final SlimefunItemStack HEATED_COOLANT = new SlimefunItemStack("HEATED_COOLANT_BNG",
 			"de4073be40cb3deb310a0be959b4cac68e825372728fafb6c2973e4e7c33",
-	        ChatColor.RESET+"Heated Coolant",
+	        ChatColor.RESET+"热化冷却液",
 	        ""
 	    );
 	
 	
-	public static final SlimefunItemStack SUPER_FREEZER = new SlimefunItemStack("SUPER_FREEZER",
+	public static final SlimefunItemStack SUPER_FREEZER = new SlimefunItemStack("SUPER_FREEZER_BNG",
 			Material.QUARTZ_BLOCK,
-	        ChatColor.RESET+"Super Freezer",
+	        ChatColor.RESET+"超高速冻结装置",
 	        "",
-	        "&7(&cWarning!&7 more inputs needed for good flow of items)",
-	        "&7Water instantly to coolant",
+	        "&7(&c警告!&7 良好的物流需要更多的输入)",
+	        "&7使水凝成冷却剂",
 	        LoreBuilder.powerPerSecond(50)
 	    );
 	
-	public static final SlimefunItemStack LEAD_BLOCK = new SlimefunItemStack("LEAD_BLOCK",
+	public static final SlimefunItemStack LEAD_BLOCK = new SlimefunItemStack("LEAD_BLOCK_BNG",
 			Material.IRON_BLOCK,
-	        ChatColor.RESET+"Lead Block",
+	        ChatColor.RESET+"铅块",
 	        "",
-	        "&fWhite &7in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &f白色 &7部分"
 	    );
 	
-	public static final SlimefunItemStack LEAD_GLASS = new SlimefunItemStack("LEAD_GLASS",
+	public static final SlimefunItemStack LEAD_GLASS = new SlimefunItemStack("LEAD_GLASS_BNG",
 			Material.GRAY_STAINED_GLASS,
-			ChatColor.RESET+"Lead Glass",
+			ChatColor.RESET+"铅晶质玻璃",
 	        "",
-	        "&7Gray in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &8灰色 &7部分"
 	    );
 	
-	public static final SlimefunItemStack BORIUM_ROD = new SlimefunItemStack("BORIUM_ROD",
+	public static final SlimefunItemStack BORIUM_ROD = new SlimefunItemStack("BORIUM_ROD_BNG",
 			Material.ANCIENT_DEBRIS,
-			ChatColor.RESET+"Borium Rod",
+			ChatColor.RESET+"硼棒",
 	        "",
-	        "&6Orange &7in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &6橙色 &7部分"
 	    );
 	
-	public static final SlimefunItemStack BORIUM = new SlimefunItemStack("BORIUM",
+	public static final SlimefunItemStack BORIUM = new SlimefunItemStack("BORIUM_BNG",
 			Material.GUNPOWDER,
-			ChatColor.RESET+"Borium",
+			ChatColor.RESET+"硼",
 	        ""
 	    );
-	public static final SlimefunItemStack REACTOR_INPUT = new SlimefunItemStack("REACTOR_INPUT",
+	public static final SlimefunItemStack REACTOR_INPUT = new SlimefunItemStack("REACTOR_INPUT_BNG",
 			Material.LIGHT_BLUE_WOOL,
-	        ChatColor.RESET+"Reactor Input",
+	        ChatColor.RESET+"反应堆输入接口",
 	        "",
-	        "&9Blue &7in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &b蓝色 &7部分"
 	    );
-	public static final SlimefunItemStack REACTOR_OUTPUT = new SlimefunItemStack("REACTOR_OUTPUT",
+	public static final SlimefunItemStack REACTOR_OUTPUT = new SlimefunItemStack("REACTOR_OUTPUT_BNG",
 			Material.RED_WOOL,
-			ChatColor.RESET+"Reactor Output",
+			ChatColor.RESET+"反应堆输出接口",
 	        "",
-	        "&cRed &7in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &4红色 &7部分"
 	    );
 	//https://minecraft-heads.com/custom-heads/miscellaneous/50973-fancy-cube
-	public static final SlimefunItemStack REACTOR_HATCH = new SlimefunItemStack("REACTOR_HATCH",
+	public static final SlimefunItemStack REACTOR_HATCH = new SlimefunItemStack("REACTOR_HATCH_BNG",
 			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWU4MzI4NDE2MDdkZjc2ZWM1NjE5MGVhODdjMzE2MDUwYTI3N2E1YTU4ZjFkM2JjODJhMGU5NGVkYjk1MzUzIn19fQ==",
-			ChatColor.RESET+"Reactor Hatch",
+			ChatColor.RESET+"反应堆舱口",
 	        "",
-	        "&aGreen &7in &bReactor Core Hologram"
+	        "&7反应堆堆芯全息图中的 &a绿色 &7部分"
 	    );
 	
 	

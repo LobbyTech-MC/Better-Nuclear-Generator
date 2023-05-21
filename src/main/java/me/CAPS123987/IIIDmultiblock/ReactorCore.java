@@ -140,19 +140,20 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 							for(int z = -1;z<5;z=z+4) {
 								for(int y = -1;y<8;y=y+2) {
 									Location Loc = b.getLocation().clone().add(x, y, z);
-									
-									
+
+
 									AreaEffectCloud Area = (AreaEffectCloud) Loc.getWorld().spawnEntity(Loc, EntityType.AREA_EFFECT_CLOUD);
-									
+
 									Area.addCustomEffect(new PotionEffect(PotionEffectType.HARM,5,2), true);
 									Area.setDuration(36000);
 									Area.setParticle(Particle.CRIT);
 								}
 							}
 						}
-						Bukkit.getPlayer(BlockStorage.getLocationInfo(l, "owner")).sendMessage(ChatColor.DARK_RED+"[REACTOR]"+ChatColor.RED+" Reactor at"+
+						Bukkit.getPlayer(BlockStorage.getLocationInfo(l, "owner")).sendMessage(ChatColor.DARK_RED+
+							"[反应堆]"+ChatColor.RED+" 位于"+
 								ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED+
-								" LEAKED");
+								" 的反应堆泄漏了");
 						ticks.replace(l, 0);
 					}
 					return;
@@ -201,18 +202,18 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 		if(isRunning(b)) {
 			if(b.getChunk().isLoaded()) {
 				int tick = ticks.get(b.getLocation());
-				
+
 				if(tick==1) {
 					menu.pushItem(new CustomItemStack(SlimefunItems.PLUTONIUM,1), outputuran);
 				}
 				long temperature = Math.round(((Double.valueOf(uran500.get(b.getLocation())))/Double.valueOf(coolantPer))*5500.0);
 				long tempe = temp.get(b.getLocation());
-				
-				
+
+
 				if(coolant_out==64||uran_out==64||tempe>maxTemp) {
 					expolode(b);
 					ticks.remove(b.getLocation());
-					
+
 				}else {
 					if(tempe<temperature) {
 						temp.replace(b.getLocation(), tempe+((temperature-tempe)/20));
@@ -220,7 +221,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 					if(tempe>temperature) {
 						temp.replace(b.getLocation(), tempe-((tempe-temperature)/10));
 					}
-					
+
 					ticks.replace(b.getLocation(), tick-1);
 					addCharge(b.getLocation(),(int)el);
 					if(!hasCoolant(b)) {
@@ -229,7 +230,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 						BlockStorage.addBlockInfo(b,"coolant", String.valueOf(coolant-coolantPer));
 					}
 					menu.pushItem(new CustomItemStack(Items.HEATED_COOLANT,(int)Math.round(coolantPer/2)), outputcoolant);
-					
+
 				}
 			}
 			return;
@@ -282,7 +283,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 				}
 			}
 		}
-		
+
 		BetterReactor.instance.getServer().getScheduler().runTaskLater(BetterReactor.instance, new Runnable() {
 
 			@Override
@@ -290,63 +291,63 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 				for(int x = -46;x<49;x=x+4) {
 					for(int z = -46;z<49;z=z+4) {
 						Location Loc = b.getLocation().clone().add(x, 0, z);
-						
+
 						Location AreaLoc = Loc.getWorld().getHighestBlockAt(Loc).getLocation();
-						
+
 						AreaEffectCloud Area = (AreaEffectCloud) AreaLoc.getWorld().spawnEntity(AreaLoc, EntityType.AREA_EFFECT_CLOUD);
-						
+
 						Area.addCustomEffect(new PotionEffect(PotionEffectType.HARM,5,2), true);
 						Area.setDuration(36000);
 						Area.setParticle(Particle.CRIT);
 					}
 				}
 			}
-			
+
 		}, 80L);
-		
-		
-		Bukkit.broadcastMessage("Boom");
+
+
+		Bukkit.broadcastMessage("爆炸");
 	}
 	public void updateStatus(int time,BlockMenu menu, int coolant_out, int uran_out, Player p,Block b,int coolantPer,int uranPer, boolean isRunning) {
-		CustomItemStack item = new CustomItemStack(Material.FLINT_AND_STEEL,ChatColor.RESET+"Remaining Time: "+String.valueOf(time/2)+"s");
+		CustomItemStack item = new CustomItemStack(Material.FLINT_AND_STEEL,ChatColor.RESET+"剩余时间: "+String.valueOf(time/2)+"s");
 		ItemMeta meta = item.getItemMeta();
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GOLD+"Is Running: "+isRunning);
+		lore.add(ChatColor.GOLD+"正在运行: "+isRunning);
 		
 		if(coolant_out>32) {
-			lore.add(ChatColor.RED+"Heated Coolant in output");
-			p.sendMessage(ChatColor.DARK_RED+"[REACTOR]"+ChatColor.RED+" Reactor at"+
+			lore.add(ChatColor.RED+"输出口有热化冷却液");
+			p.sendMessage(ChatColor.DARK_RED+"[工业反应堆]"+ChatColor.RED+" 反应堆在"+
 			ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED
-			+" has "+ChatColor.YELLOW+coolant_out+ChatColor.RED+" coolant in output");
+			+" 有 "+ChatColor.YELLOW+coolant_out+ChatColor.RED+" 冷却剂在输出口");
 		}
 		if(uran_out>32) {
 			lore.add(ChatColor.RED+"Uran waste in output");
-			p.sendMessage(ChatColor.DARK_RED+"[REACTOR]"+ChatColor.RED+" Reactor at"+
+			p.sendMessage(ChatColor.DARK_RED+"[工业反应堆]"+ChatColor.RED+" 反应堆在"+
 			ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED
-			+" has "+ChatColor.YELLOW+uran_out+ChatColor.RED+" uran waste in output");
+			+" 有 "+ChatColor.YELLOW+uran_out+ChatColor.RED+" 核废料在输出口");
 		}
 		if(isRunning&&temp.get(b.getLocation())>6000) {
 			lore.add(ChatColor.DARK_RED+"High heat");
-			p.sendMessage(ChatColor.DARK_RED+"[REACTOR]"+ChatColor.RED+" Reactor at"+
+			p.sendMessage(ChatColor.DARK_RED+"[工业反应堆]"+ChatColor.RED+" 反应堆在"+
 					ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED
-					+" has High heat!");
+					+" 出现异常高温!");
 		}
 		if(menu.hasViewer()) {
-			lore.add(ChatColor.GRAY+"Coolant Per Tick: "+coolantPer);
-			lore.add(ChatColor.GRAY+"Uran Per 500s: "+uranPer);
+			lore.add(ChatColor.GRAY+"每粘液刻所需冷却液: "+coolantPer);
+			lore.add(ChatColor.GRAY+"每500秒所需铀: "+uranPer);
 			
 			if(isRunning) {
-				lore.add(ChatColor.YELLOW+"->Current Uran Per 500s: "+uran500.get(b.getLocation()));
-				lore.add(temp(temp.get(b.getLocation()))+"->Current temperature: "+temp.get(b.getLocation())+" °C");
+				lore.add(ChatColor.YELLOW+"->当前每500秒所需铀: "+uran500.get(b.getLocation()));
+				lore.add(temp(temp.get(b.getLocation()))+"->当前温度: "+temp.get(b.getLocation())+" °C");
 				long el = uran500.get(b.getLocation())*power;
-				lore.add(ChatColor.YELLOW+"->Current power: "+ChatColor.YELLOW+el*2+" J/s");
+				lore.add(ChatColor.YELLOW+"->当前发电量: "+ChatColor.YELLOW+el*2+" J/s");
 				
 			}
 			
 			long temperature = Math.round((Double.valueOf(uranPer)/Double.valueOf(coolantPer))*5500);
-			lore.add(temp(temperature)+"Estimated temperature: "+temperature+" °C");
+			lore.add(temp(temperature)+"预计温度: "+temperature+" °C");
 			long el = uranPer*power;
-			lore.add(ChatColor.GRAY+"Estimated power: "+ChatColor.YELLOW+el*2+" J/s");
+			lore.add(ChatColor.GRAY+"预计发电量: "+ChatColor.YELLOW+el*2+" J/s");
 			
 			meta.setLore(lore);
 			item.setItemMeta(meta);
@@ -383,7 +384,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 				
 				return false;
 			});
-			menu.replaceExistingItem(coolant_status, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,"&bCoolant Status: &9"+String.valueOf(percent)+"%","&r&fCurrent coolant per tick: &7"+String.valueOf(coolantPer),"&r&fLeft Click: &7+1", "&r&fRight Click: &7-1"));
+			menu.replaceExistingItem(coolant_status, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,"&b冷却液状态: &9"+String.valueOf(percent)+"%","&r&fCurrent coolant per tick: &7"+String.valueOf(coolantPer),"&r&fLeft Click: &7+1", "&r&fRight Click: &7-1"));
 			
 			}
 		}
@@ -409,7 +410,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 				return false;
 			});
 			
-			menu.replaceExistingItem(uran_status, new CustomItemStack(SlimefunItems.URANIUM,"&cFuel Status: &4"+String.valueOf(percent)+"%","&r&fCurrent uran per 500s: &7"+String.valueOf(uranPer),"&r&fLeft Click: &7+1", "&r&fRight Click: &7+1"));
+			menu.replaceExistingItem(uran_status, new CustomItemStack(SlimefunItems.URANIUM,"&c燃料状态: &4"+String.valueOf(percent)+"%","&r&f当前500秒所需铀: &7"+String.valueOf(uranPer),"&r&f左击: &7+1", "&r&f右击: &7+1"));
 		}
 	}
 	
@@ -547,14 +548,14 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 	public ItemStack status(Boolean b, BlockMenu menu,Block Block) {
 		ItemStack item2 = new ItemStack(Material.FLINT_AND_STEEL);
 		ItemMeta m = item2.getItemMeta();
-		m.setDisplayName(ChatColor.RESET+"Status");
+		m.setDisplayName(ChatColor.RESET+"状态");
 		List<String> lore = new ArrayList<String>();
 		
 		if(b) {
-			lore.add(ChatColor.GREEN+"Multiblock complete "+ChatColor.DARK_GREEN+"✔");
+			lore.add(ChatColor.GREEN+"多方块已完成 "+ChatColor.DARK_GREEN+"✔");
 		}else {
-			lore.add(ChatColor.RED+"Multiblock not complete "+ChatColor.DARK_RED+"✘");
-			lore.add(ChatColor.GRAY+"(Click to show "+ChatColor.AQUA+"Reactor Core Hologram"+ChatColor.GRAY+")");
+			lore.add(ChatColor.RED+"多方块未完成 "+ChatColor.DARK_RED+"✘");
+			lore.add(ChatColor.GRAY+"(单击以显示 "+ChatColor.AQUA+"反应堆堆芯全息图"+ChatColor.GRAY+")");
 			menu.addMenuClickHandler(4, (p, slot, item, action) -> {
 				spawnParticeReactor(Block);
                 return false;
@@ -729,9 +730,9 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
     }
 	@SuppressWarnings("deprecation")
 	private void constructMenu(BlockMenuPreset preset) {
-		preset.addItem(10, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,"&bCoolant Slot", "", "&fThis Slot accepts Coolant Cells"),
+		preset.addItem(10, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,"&b冷却剂槽", "", "&f请向槽内放入冷却剂"),
                 ChestMenuUtils.getEmptyClickHandler());
-		preset.addItem(16, new CustomItemStack(SlimefunItems.URANIUM,"&7Fuel Slot", "", "&fThis Slot accepts radioactive Fuel such as:", "&2Uranium"),
+		preset.addItem(16, new CustomItemStack(SlimefunItems.URANIUM,"&7燃料槽", "", "&f请向槽内放入放射性燃料", "&2比如:铀"),
                 ChestMenuUtils.getEmptyClickHandler());
     	
         for (int i : border) {
