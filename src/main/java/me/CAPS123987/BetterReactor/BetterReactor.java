@@ -2,7 +2,9 @@ package me.CAPS123987.BetterReactor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -33,15 +35,19 @@ public class BetterReactor extends JavaPlugin implements SlimefunAddon {
 	
     @Override
     public void onEnable() {
+
+        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
+            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         // Read something from your config.yml
         Config cfg = new Config(this);
 
-        if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
-        	
-        	GitHubBuildsUpdater
-        	updater = new GitHubBuildsUpdater(this, this.getFile(), "SlimefunGuguProject/Better-Nuclear-Generator/master");
-        	updater.start();
-        	
+        if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
+            GuizhanUpdater.start(this, this.getFile(), "SlimefunGuguProject", "Better-Nuclear-Generator", "master");
         }
         
         instance = this;
