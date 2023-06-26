@@ -30,14 +30,14 @@ public class Items {
 	
 	public static final SlimefunItemStack REACTOR_CORE = new SlimefunItemStack("REACTOR_CORE_BNG",
 			Material.MAGENTA_GLAZED_TERRACOTTA,
-	        ChatColor.RESET+"反应堆堆芯",
+	        ChatColor.RESET+"反应堆核心",
 	        "",
 	        LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
 	        LoreBuilder.powerBuffer(4096),
 	        LoreBuilder.powerPerSecond(4096),
 	        "&8\u21E8 &e\u26A1 &7"+"持续 "+ReactorCore.burnTime/2+"s",
 	        "&8\u21E8 &e\u26A1 &7"+"总发电: 2.04M J",
-	        "&7反应堆堆芯, &b可显示反应堆堆芯全息图"
+	        "&7反应堆核心, &b可显示反应堆全息图"
 	    );
 	public static final SlimefunItemStack HEATED_COOLANT = new SlimefunItemStack("HEATED_COOLANT_BNG",
 			"de4073be40cb3deb310a0be959b4cac68e825372728fafb6c2973e4e7c33",
