@@ -2,9 +2,12 @@ package me.CAPS123987.Item;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.text.DecimalFormat;
+
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -18,11 +21,13 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.CAPS123987.BetterReactor.BetterReactor;
 import me.CAPS123987.IIIDmultiblock.ReactorCore;
 import net.md_5.bungee.api.ChatColor;
-
 public class Items {
 	
 	
-	
+	public static FileConfiguration cfg = BetterReactor.instance.getConfig();
+	public static int uranMax = cfg.getInt("uranMax");
+	public static DecimalFormat df = new DecimalFormat("0.00");
+
 	public static final ItemGroup betterReactor = new ItemGroup(new NamespacedKey(BetterReactor.getInstance(),
 	        "Better_Reactor"),
 	        new CustomItemStack(Material.OBSIDIAN, "&d工业反应堆")
@@ -33,10 +38,10 @@ public class Items {
 	        ChatColor.RESET+"反应堆核心",
 	        "",
 	        LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
-	        LoreBuilder.powerBuffer(4096),
-	        LoreBuilder.powerPerSecond(4096),
-	        "&8\u21E8 &e\u26A1 &7"+"持续 "+ReactorCore.burnTime/2+"s",
-	        "&8\u21E8 &e\u26A1 &7"+"总发电: 2.04M J",
+	        LoreBuilder.powerBuffer(uranMax*ReactorCore.powerPer*2),
+	        LoreBuilder.powerPerSecond(uranMax*ReactorCore.powerPer*2),
+	        "&8\u21E8 &e\u26A1 &7"+"持续 "+ReactorCore.burnTime+" 粘液刻",
+	        "&8\u21E8 &e\u26A1 &7"+"总发电："+df.format(uranMax*ReactorCore.powerPer*ReactorCore.burnTime/1000000f) +"M J",
 	        "&7反应堆核心, &b可显示反应堆全息图"
 	    );
 	public static final SlimefunItemStack HEATED_COOLANT = new SlimefunItemStack("HEATED_COOLANT_BNG",
@@ -50,7 +55,7 @@ public class Items {
 			Material.QUARTZ_BLOCK,
 	        ChatColor.RESET+"超高速冻结装置",
 	        "",
-	        "&7(&c警告!&7 良好的物流需要更多的输入)",
+	        "&7（&c警告！&7需要更多的输入以保持良好的物流）",
 	        "&7使水凝成冷却剂",
 	        LoreBuilder.powerPerSecond(50)
 	    );
