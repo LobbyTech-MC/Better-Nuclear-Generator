@@ -64,21 +64,21 @@ public class Items {
 			Material.IRON_BLOCK,
 	        ChatColor.RESET+"铅块",
 	        "",
-	        "&7反应堆堆芯全息图中的 &f白色 &7部分"
+	        "&7反应堆全息图中的 &f白色 &7部分"
 	    );
 	
 	public static final SlimefunItemStack LEAD_GLASS = new SlimefunItemStack("LEAD_GLASS_BNG",
 			Material.GRAY_STAINED_GLASS,
 			ChatColor.RESET+"铅晶质玻璃",
 	        "",
-	        "&7反应堆堆芯全息图中的 &8灰色 &7部分"
+	        "&7反应堆全息图中的 &8灰色 &7部分"
 	    );
 	
 	public static final SlimefunItemStack BORIUM_ROD = new SlimefunItemStack("BORIUM_ROD_BNG",
 			Material.ANCIENT_DEBRIS,
 			ChatColor.RESET+"硼棒",
 	        "",
-	        "&7反应堆堆芯全息图中的 &6橙色 &7部分"
+	        "&7反应堆全息图中的 &6橙色 &7部分"
 	    );
 	
 	public static final SlimefunItemStack BORIUM = new SlimefunItemStack("BORIUM_BNG",
@@ -90,20 +90,20 @@ public class Items {
 			Material.LIGHT_BLUE_WOOL,
 	        ChatColor.RESET+"反应堆输入接口",
 	        "",
-	        "&7反应堆堆芯全息图中的 &b蓝色 &7部分"
+	        "&7反应堆全息图中的 &b蓝色 &7部分"
 	    );
 	public static final SlimefunItemStack REACTOR_OUTPUT = new SlimefunItemStack("REACTOR_OUTPUT_BNG",
 			Material.RED_WOOL,
 			ChatColor.RESET+"反应堆输出接口",
 	        "",
-	        "&7反应堆堆芯全息图中的 &4红色 &7部分"
+	        "&7反应堆全息图中的 &4红色 &7部分"
 	    );
 	//https://minecraft-heads.com/custom-heads/miscellaneous/50973-fancy-cube
 	public static final SlimefunItemStack REACTOR_HATCH = new SlimefunItemStack("REACTOR_HATCH_BNG",
 			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWU4MzI4NDE2MDdkZjc2ZWM1NjE5MGVhODdjMzE2MDUwYTI3N2E1YTU4ZjFkM2JjODJhMGU5NGVkYjk1MzUzIn19fQ==",
 			ChatColor.RESET+"反应堆舱口",
 	        "",
-	        "&7反应堆堆芯全息图中的 &a绿色 &7部分"
+	        "&7反应堆全息图中的 &a绿色 &7部分"
 	    );
 	
 	

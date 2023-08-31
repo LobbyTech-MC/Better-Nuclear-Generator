@@ -162,7 +162,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 							}
 						}
 						Bukkit.getPlayer(BlockStorage.getLocationInfo(l, "owner")).sendMessage(ChatColor.DARK_RED+
-							"[反应堆]"+ChatColor.RED+" 位于"+
+							"[反应堆] "+ChatColor.RED+" 位于"+
 								ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED+
 								" 的反应堆泄漏了");
 						ticks.replace(l, 0);
@@ -294,7 +294,7 @@ public class ReactorCore extends SimpleSlimefunItem<BlockTicker> implements Ener
 
 		if(biggerExplosion) {
 			if(announceExplosion)
-				Bukkit.broadcastMessage(ChatColor.DARK_RED+"WARNING: SERVER LAG INCOMING");
+				Bukkit.broadcastMessage(ChatColor.DARK_RED+"警告：即将到来的服务器卡顿");
 
 			for(int x=-uranPer*2;x<=uranPer*2;x=x+4) {
 				for(int z=-uranPer*2;z<=uranPer*2;z=z+4) {
@@ -345,10 +345,11 @@ Area.setRadius(12);
 
 	}
 	public void updateStatus(int time,BlockMenu menu, int coolant_out, int uran_out, Player p,Block b,int coolantPer,int uranPer, boolean isRunning) {
-		CustomItemStack item = new CustomItemStack(Material.FLINT_AND_STEEL,ChatColor.RESET+"剩余时间: "+String.valueOf(time)+"t");
+		CustomItemStack item = new CustomItemStack(Material.FLINT_AND_STEEL,
+			ChatColor.RESET+"剩余时间："+String.valueOf(time)+"粘液刻");
 		ItemMeta meta = item.getItemMeta();
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GOLD+"正在运行: "+isRunning);
+		lore.add(ChatColor.GOLD+"正在运行："+isRunning);
 		
 		if(coolant_out>32) {
 			lore.add(ChatColor.RED+"输出口有热化冷却液");
@@ -357,13 +358,13 @@ Area.setRadius(12);
 			+" 有 "+ChatColor.YELLOW+coolant_out+ChatColor.RED+" 冷却剂在输出口");
 		}
 		if(uran_out>32) {
-			lore.add(ChatColor.RED+"Uran waste in output");
+			lore.add(ChatColor.RED+"核废料于输出口");
 			p.sendMessage(ChatColor.DARK_RED+"[工业反应堆]"+ChatColor.RED+" 反应堆在"+
 			ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED
 			+" 有 "+ChatColor.YELLOW+uran_out+ChatColor.RED+" 核废料在输出口");
 		}
 		if(isRunning&&temp.get(b.getLocation())>6000) {
-			lore.add(ChatColor.DARK_RED+"High heat");
+			lore.add(ChatColor.DARK_RED+"温度过高");
 			p.sendMessage(ChatColor.DARK_RED+"[工业反应堆]"+ChatColor.RED+" 反应堆在"+
 					ChatColor.GOLD+" x: "+b.getLocation().getBlockX()+" y: "+b.getLocation().getBlockY()+" z: "+b.getLocation().getBlockZ()+ChatColor.RED
 					+" 出现异常高温!");

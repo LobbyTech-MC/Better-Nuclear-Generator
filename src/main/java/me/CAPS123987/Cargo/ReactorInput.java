@@ -167,7 +167,7 @@ public class ReactorInput extends SimpleSlimefunItem<BlockTicker> /*implements E
 					}
 				}
 				if(found == false) {
-					e.getPlayer().sendMessage(ChatColor.RED+"No Reactor Core found");
+					e.getPlayer().sendMessage(ChatColor.RED+"未找到反应堆核心");
 					BlockStorage.clearBlockInfo(b);
 					e.setCancelled(true);
 				}
@@ -202,9 +202,11 @@ public class ReactorInput extends SimpleSlimefunItem<BlockTicker> /*implements E
                 ChestMenuUtils.getEmptyClickHandler());
         }
         
-        preset.addItem(2, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,ChatColor.AQUA+"Reactor Coolant Cell",""),ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(2, new CustomItemStack(SlimefunItems.REACTOR_COOLANT_CELL,ChatColor.AQUA+"反应堆冷却剂",""),
+			ChestMenuUtils.getEmptyClickHandler());
         
-        preset.addItem(6, new CustomItemStack(SlimefunItems.URANIUM,ChatColor.DARK_RED+"Uranium",""),ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(6, new CustomItemStack(SlimefunItems.URANIUM,ChatColor.DARK_RED+"铀",""),
+			ChestMenuUtils.getEmptyClickHandler());
         
 
         for (int i : getOutputSlots()) {
