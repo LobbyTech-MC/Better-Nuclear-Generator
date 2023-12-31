@@ -1,15 +1,11 @@
 package me.CAPS123987.Item;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.text.DecimalFormat;
-
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;

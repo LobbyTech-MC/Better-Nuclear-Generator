@@ -26,7 +26,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.CAPS123987.IIIDmultiblock.ReactorCore;
 import me.CAPS123987.Item.Items;
-import me.CAPS123987.Utils.ETInventoryBlock;
 import me.CAPS123987.Utils.Methodes;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
